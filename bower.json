@@ -2,7 +2,7 @@
   "name": "project",
   "version": "2.1.0",
   "authors": [
-    "Mediatec Software http://www.mediatec.org <hello@mediatec.com>"
+    "terra-salvare"
   ],
   "ignore": [
     "**/.*",

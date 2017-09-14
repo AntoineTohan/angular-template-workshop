@@ -1,5 +1,5 @@
 {
-  "name": "clean-ui",
+  "name": "terra-salvare",
   "version": "2.1.0",
   "license": "MIT",
   "angular-cli": {},
@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/common": "latest",
     "@angular/compiler": "latest",

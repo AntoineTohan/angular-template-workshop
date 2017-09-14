@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class CleanUiPage {
+export class TerraSalvarePage {
   navigateTo() {
     return browser.get('/');
   }
