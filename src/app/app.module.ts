@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {BaseRequestOptions, HttpModule} from '@angular/http';
 import { Router, NavigationStart, NavigationEnd, RouterModule } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -12,6 +12,15 @@ import { TopBarComponent} from './components/top-bar/top-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { StructureModule } from './structure/structure.module';
+import {RegisterComponent} from './structure/apps/register/register.component';
+import {AuthGuard} from './structure/apps/guards/auth.guard';
+import {AlertService} from './structure/apps/services/alert.service';
+import {AuthenticationService} from './structure/apps/services/authentication.service';
+import {UserService} from './structure/apps/services/user.service';
+import {MockBackend} from '@angular/http/testing';
+import {fakeBackendProvider} from './structure/apps/helpers/fake-backend';
+import {LoginComponent} from "./structure/apps/login/login.component";
+
 
 declare var NProgress: any;
 
@@ -19,7 +28,9 @@ declare var NProgress: any;
     declarations: [
         AppComponent,
         TopBarComponent,
-        FooterComponent
+        FooterComponent,
+        RegisterComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
@@ -30,7 +41,17 @@ declare var NProgress: any;
         NgbModule.forRoot(),
         routing
     ],
-    providers: [],
+    providers: [
+        AuthGuard,
+        AlertService,
+        AuthenticationService,
+        UserService,
+
+        // providers used to create fake backend
+        fakeBackendProvider,
+        MockBackend,
+        BaseRequestOptions
+    ],
     bootstrap: [ AppComponent ]
 })
 

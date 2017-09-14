@@ -44,7 +44,7 @@
         margin-left: 3.57rem;
     }
     body.cat__menu-left--visible .cat__content {
-        margin-left: 17.85rem;
+        margin-left: 0rem;
     }
 }
 

@@ -14,34 +14,87 @@ export class DashboardsAlpha implements OnInit {
   ngOnInit() {
 
     $( function() {
+        // caroussel
 
-      ///////////////////////////////////////////////////////////
-      // load flappy bird
-      $(function(){
-
-        function loadGame() {
-          $('#hidden-game').attr('src', $('#hidden-game').attr('load-src'));
-        }
-
-        $('#duck-game .card-header').on('dblclick', function(){
-          loadGame();
+        $('#owl1').owlCarousel({
+            loop: true,
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 4
+                }
+            }
         });
 
-        $('#duck-game .cat__core__sortable__uncollapse').on('click', function(){
-          loadGame();
+        $('#owl2').owlCarousel({
+            stagePadding: 50,
+            loop: true,
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
         });
 
-      });
+        $('#owl3').owlCarousel({
+            items: 4,
+            lazyLoad: true,
+            loop: true,
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        });
 
-      ///////////////////////////////////////////////////////////
-      // tooltips
-      $("[data-toggle=tooltip]").tooltip();
+        $('#owl4').owlCarousel({
+            items: 1,
+            margin: 10,
+            autoHeight: true
+        });
 
-      ///////////////////////////////////////////////////////////
-      // jquery ui sortable
+        $('#owl5').owlCarousel({
+            items: 1,
+            merge: true,
+            loop: true,
+            margin: 10,
+            video: true,
+            lazyLoad: true,
+            center: true,
+            responsive: {
+                480: {
+                    items: 2
+                },
+                600: {
+                    items: 4
+                }
+            }
+        });
+        ///////////////////////////////////////////////////////////
+      // jquery ui tri
       $('#left-col, #right-col, #bottom-col').each(function(){
         $(this).sortable({
-          // connect left and right containers
+          // connection container
           connectWith: '.cat__core__sortable',
           tolerance: 'pointer',
           scroll: true,
@@ -64,7 +117,7 @@ export class DashboardsAlpha implements OnInit {
 
           },
 
-          // save order state on order update to localStorage
+          // sauvegarde de l'ordre des section
           update: function () {
             var orderArray = $(this).sortable('toArray', {attribute: 'order-id'}),
               prefix = $(this).attr('id');
@@ -102,125 +155,6 @@ export class DashboardsAlpha implements OnInit {
       $('.cat__core__sortable .card-header').on('dblclick', function() {
         $(this).closest('.card').toggleClass('cat__core__sortable__collapsed');
       });
-
-      ///////////////////////////////////////////////////////////
-      // datatables
-      $('#example1').DataTable({
-        responsive: true
-      });
-
-      ///////////////////////////////////////////////////////////
-      // calendar
-      $('.example-calendar-block').fullCalendar({
-        //aspectRatio: 2,
-        height: 475,
-        header: {
-          left: 'prev, next',
-          center: 'title',
-          right: 'month, agendaWeek, agendaDay'
-        },
-        buttonIcons: {
-          prev: 'none fa fa-arrow-left',
-          next: 'none fa fa-arrow-right',
-          prevYear: 'none fa fa-arrow-left',
-          nextYear: 'none fa fa-arrow-right'
-        },
-        editable: true,
-        eventLimit: true, // allow "more" link when too many events
-        viewRender: function(view, element) {
-          if (!(/Mobi/.test(navigator.userAgent)) && jQuery().jScrollPane) {
-            $('.fc-scroller').jScrollPane({
-              autoReinitialise: true,
-              autoReinitialiseDelay: 100
-            });
-          }
-        },
-        defaultDate: '2017-05-12',
-        events: [
-          {
-            title: 'All Day Event',
-            start: '2017-05-01',
-            className: 'fc-event-success'
-          },
-          {
-            id: 999,
-            title: 'Repeating Event',
-            start: '2017-05-09T16:00:00',
-            className: 'fc-event-default'
-          },
-          {
-            id: 999,
-            title: 'Repeating Event',
-            start: '2017-05-16T16:00:00',
-            className: 'fc-event-success'
-          },
-          {
-            title: 'Conference',
-            start: '2017-05-11',
-            end: '2017-05-14',
-            className: 'fc-event-danger'
-          }
-        ],
-        eventClick: function(calEvent, jsEvent, view) {
-          if (!$(this).hasClass('event-clicked')) {
-            $('.fc-event').removeClass('event-clicked');
-            $(this).addClass('event-clicked');
-          }
-        }
-      });
-
-      ///////////////////////////////////////////////////////////
-      // ladda buttons
-      Ladda.bind( '.ladda-button', { timeout: 2000 } );
-
-      ///////////////////////////////////////////////////////////
-      // chart1
-      new Chartist.Line(".chart-line", {
-        labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        series: [
-          [5, 0, 7, 8, 12],
-          [2, 1, 3.5, 7, 3],
-          [1, 3, 4, 5, 6]
-        ]
-      }, {
-        fullWidth: !0,
-        chartPadding: {
-          right: 40
-        },
-        plugins: [
-          Chartist.plugins.tooltip()
-        ]
-      });
-
-      ///////////////////////////////////////////////////////////
-      // chart 2
-      var overlappingData = {
-          labels: ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-          series: [
-            [5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
-            [3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
-          ]
-        },
-        overlappingOptions = {
-          seriesBarDistance: 10,
-          plugins: [
-            Chartist.plugins.tooltip()
-          ]
-        },
-        overlappingResponsiveOptions = [
-          ["", {
-            seriesBarDistance: 5,
-            axisX: {
-              labelInterpolationFnc: function(value) {
-                return value[0]
-              }
-            }
-          }]
-        ];
-
-      new Chartist.Bar(".chart-overlapping-bar", overlappingData, overlappingOptions, overlappingResponsiveOptions);
-
-
       ///////////////////////////////////////////////////////////
       // custom scroll
       if (!(/Mobi/.test(navigator.userAgent)) && jQuery().jScrollPane) {
@@ -242,10 +176,6 @@ export class DashboardsAlpha implements OnInit {
           });
         });
       }
-
-      ///////////////////////////////////////////////////////////
-      // adjustable textarea
-      autosize($('.adjustable-textarea'));
 
       ///////////////////////////////////////////////////////////
       // slider
