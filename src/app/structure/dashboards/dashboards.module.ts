@@ -8,20 +8,20 @@ import {ProduitComponent} from '../apps/produit.page';
 import {AssociationComponent} from '../apps/association.page';
 
 
-export const routes: Routes = [
-    { path: 'dashboards',
-        children: [
-            { path: 'profile', component: AppsProfile},
-            { path: 'association', component: AssociationComponent},
-            { path: 'produit', component: ProduitComponent},
-        ], component: DashboardsAlpha
-    }
-];
+// export const routes: Routes = [
+//     { path: 'dashboards',
+//         children: [
+//             { path: 'profile', component: AppsProfile},
+//             { path: 'association', component: AssociationComponent},
+//             { path: 'produit', component: ProduitComponent},
+//         ], component: DashboardsAlpha
+//     }
+// ];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    // RouterModule.forChild(routes)
   ],
   declarations: [
     DashboardsAlpha,
