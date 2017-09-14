@@ -5,7 +5,7 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "npm start",
+    "start": "node server.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -23,7 +23,12 @@
     "core-js": "latest",
     "rxjs": "latest",
     "zone.js": "latest",
+    "@angular/cli": "latest",
     "@ng-bootstrap/ng-bootstrap": "latest"
+  },
+  "engines": {
+    "node": "6.11.1",
+    "npm": "3.10.9"
   },
   "devDependencies": {
     "@angular/cli": "latest",
